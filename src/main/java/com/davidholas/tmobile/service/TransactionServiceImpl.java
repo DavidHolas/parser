@@ -19,15 +19,12 @@ public class TransactionServiceImpl implements TransactionService {
     public String markTheOrder(String fileLocation) {
         List<Transaction> transactions = lineParserServiceImpl.parseLines(fileLocation);
         fillPositions(transactions);
-        return printOutput(transactions);
+        return assambleOutput(transactions);
     }
 
-    private String printOutput(List<Transaction> transactions) {
+    private String assambleOutput(List<Transaction> transactions) {
         StringBuilder sb = new StringBuilder();
-        String output = "";
-        for (Transaction transaction : transactions) {
-            sb.append(transaction.toString());
-        }
+        transactions.forEach(t -> sb.append(t.toString()));
         return sb.toString();
     }
 
