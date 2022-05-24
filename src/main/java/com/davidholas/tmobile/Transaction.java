@@ -2,7 +2,7 @@ package com.davidholas.tmobile;
 
 import java.time.LocalDateTime;
 
-public class Order {
+public class Transaction {
 
     private int id;
     private String provider;
@@ -10,7 +10,7 @@ public class Order {
     private LocalDateTime time;
     private int position;
 
-    public Order(int id, String provider, String subject, LocalDateTime time) {
+    public Transaction(int id, String provider, String subject, LocalDateTime time) {
         this.id = id;
         this.provider = provider;
         this.subject = subject;
@@ -55,5 +55,17 @@ public class Order {
 
     public void setPosition(int position) {
         this.position = position;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.getProvider())
+                .append("|")
+                .append(this.getPosition())
+                .append("|")
+                .append(this.getSubject())
+                .append("\n");
+        return sb.toString();
     }
 }
